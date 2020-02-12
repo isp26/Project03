@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -6,9 +7,13 @@ public class PlayerMovement : MonoBehaviour
 
     public float forwardForce = 2000f;
     public float sideForce = 500f;
+    public GameObject blueTAG;
+    public GameObject redTAG;
+    public GameObject greenTAG;
+    public string color = "RED";
+    public float timeBetween = 0.5f; 
+    private float timestamp;
 
-    public string color = "Red";
-    
     void FixedUpdate()
     {
         rb.AddForce(forwardForce * Time.deltaTime, 0, 0);
@@ -26,6 +31,35 @@ public class PlayerMovement : MonoBehaviour
         if (rb.position.y < -1f)
         {
             FindObjectOfType<GameManager>().EndGame();
+        }
+        
+        if (Input.GetKeyUp("l"))
+        {
+            if ( Time.time >= timestamp && color == "RED")
+            {
+                redTAG.SetActive(false);
+                greenTAG.SetActive(true);
+                color = "GREEN";
+                Debug.Log("Color changed GREED");
+                timestamp = Time.time + timeBetween;
+            }
+            else if ( Time.time >= timestamp && color == "GREEN")
+            {
+                greenTAG.SetActive(false);
+                blueTAG.SetActive(true);
+                color = "BLUE";
+                Debug.Log("Color changed BLUE");
+                timestamp = Time.time + timeBetween;
+            }
+            else if ( Time.time >= timestamp && color == "BLUE" )
+            {
+                blueTAG.SetActive(false);
+                redTAG.SetActive(true);
+                color = "RED";
+                Debug.Log("Color Changed RED");
+                timestamp = Time.time + timeBetween;
+            }
+
         }
     }
 }
