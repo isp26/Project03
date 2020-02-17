@@ -20,7 +20,7 @@ public class PlayerCollision : MonoBehaviour
         {
             FindObjectOfType<GameManager>().EndGame();
             Debug.Log("Hit with RED");
-            movement.rb.AddForce(-2000, 0, 0);
+            movement.rb.AddForce(-8000, 0, 0);
             movement.enabled = false;
         }
 

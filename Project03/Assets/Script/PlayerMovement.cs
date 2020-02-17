@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject redTAG;
     public GameObject greenTAG;
     public string color = "RED";
-    public float timeBetween = 0.5f; 
+    public float timeBetween = 0.2f; 
     private float timestamp;
 
     void FixedUpdate()
