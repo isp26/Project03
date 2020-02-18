@@ -13,6 +13,11 @@ public class PlayerMovement : MonoBehaviour
     public string color = "RED";
     public float timeBetween = 0.2f; 
     private float timestamp;
+    public GameObject playerMAT;
+    public Material RED;
+    public Material GREEN;
+    public Material BLUE;
+
 
     void FixedUpdate()
     {
@@ -37,29 +42,50 @@ public class PlayerMovement : MonoBehaviour
         {
             if ( Time.time >= timestamp && color == "RED")
             {
-                redTAG.SetActive(false);
-                greenTAG.SetActive(true);
+                rb.GetComponent<Renderer>().material = GREEN;
                 color = "GREEN";
                 Debug.Log("Color changed GREED");
                 timestamp = Time.time + timeBetween;
             }
             else if ( Time.time >= timestamp && color == "GREEN")
             {
-                greenTAG.SetActive(false);
-                blueTAG.SetActive(true);
+                rb.GetComponent<Renderer>().material = BLUE;
                 color = "BLUE";
                 Debug.Log("Color changed BLUE");
                 timestamp = Time.time + timeBetween;
             }
             else if ( Time.time >= timestamp && color == "BLUE" )
             {
-                blueTAG.SetActive(false);
-                redTAG.SetActive(true);
+                rb.GetComponent<Renderer>().material = RED;
                 color = "RED";
                 Debug.Log("Color Changed RED");
                 timestamp = Time.time + timeBetween;
             }
+        }
 
+        if (Input.GetKeyUp("k"))
+        {
+            if ( Time.time >= timestamp && color == "RED")
+            {
+                rb.GetComponent<Renderer>().material = BLUE;
+                color = "BLUE";
+                Debug.Log("Color changed BLUE");
+                timestamp = Time.time + timeBetween;
+            }
+            else if ( Time.time >= timestamp && color == "GREEN")
+            {
+                rb.GetComponent<Renderer>().material = RED;
+                color = "RED";
+                Debug.Log("Color changed RED");
+                timestamp = Time.time + timeBetween;
+            }
+            else if ( Time.time >= timestamp && color == "BLUE" )
+            {
+                rb.GetComponent<Renderer>().material = GREEN;
+                color = "GREEN";
+                Debug.Log("Color Changed GREEN");
+                timestamp = Time.time + timeBetween;
+            }
         }
     }
 }
