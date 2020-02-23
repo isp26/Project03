@@ -433,9 +433,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Game
-
-'
+  m_Text: A Riot
 --- !u!222 &597316036
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -565,8 +563,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1
+  movement: {fileID: 0}
   completeLevelUI: {fileID: 0}
   restratLevelUI: {fileID: 0}
+  player: {fileID: 0}
+  objects: []
+  timeBetween: 5
 --- !u!4 &1058705031
 Transform:
   m_ObjectHideFlags: 0
@@ -715,7 +717,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Title
+  m_Text: 
 --- !u!222 &1755210630
 CanvasRenderer:
   m_ObjectHideFlags: 0
