@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private Vector3 spawnPosition;
     public float timeBetween = 5f;
     private float timestamp;
+    public AudioSource backGroundMusic;
 
     void Update()
     {
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
     public void CompleteLevel ()
     {
         completeLevelUI.SetActive(true);
+
     }
 
     public void EndGame()
@@ -63,7 +65,9 @@ public class GameManager : MonoBehaviour
     
     void Restart ()
     {
+        backGroundMusic.enabled = false;
         restratLevelUI.SetActive(true);
+        FindObjectOfType<SoundManager>().error();
     }
 
 }

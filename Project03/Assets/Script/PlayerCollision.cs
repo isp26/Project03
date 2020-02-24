@@ -3,6 +3,7 @@
 public class PlayerCollision : MonoBehaviour
 {
     public PlayerMovement movement;
+    public AudioSource backGroundMusic;
 
     void OnCollisionEnter(Collision collision)
     {
@@ -10,6 +11,9 @@ public class PlayerCollision : MonoBehaviour
         {
             movement.enabled = false;
             FindObjectOfType<GameManager>().EndGame();
+            FindObjectOfType<SoundManager>().crash();
+            Debug.Log("OFFmusic");
+            backGroundMusic.enabled = false;
         }
 
     }
@@ -19,9 +23,12 @@ public class PlayerCollision : MonoBehaviour
         if (other.tag != movement.color & other.tag != "GOAL")
         {
             FindObjectOfType<GameManager>().EndGame();
+            FindObjectOfType<SoundManager>().crash();
             Debug.Log("Hit with RED");
-            movement.rb.AddForce(-8000, 0, 0);
+            float currentForce = movement.forwardForce;
+            movement.rb.AddForce(-currentForce, 0, 0);
             movement.enabled = false;
+            backGroundMusic.enabled = false;
         }
 
     }
